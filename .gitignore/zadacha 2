@@ -1,0 +1,35 @@
+#include <iostream>
+#include <string.h>
+#include <cstring>
+using namespace std;
+struct Student{//структура студентов
+	char Name[64];//имя студента
+	int Mark[5];//оценки студента
+};
+int main() {
+	setlocale(LC_ALL, "Russian");//добавляет русский язык в консоль
+	Student Student[10];//массив студентов
+	int o = 0, h = 0, t = 0, d = 0;//количество отличников хорошистов троешников двоешников
+	for (int i = 0; i < 10; i++){
+		cout << "Введите имя студента " << endl;
+		cin>>Student[i].Name;//ввод имени студента
+		cout << "Введите оценки студента - ";
+		int h1 = 0, t1 = 0, d1 = 0;//количество пяторок четвёрок троек и двоек у данного студента
+		for (int j = 0; j < 5; j++){
+			cin >> Student[i].Mark[j];//ввод каждой оценки
+			if (Student[i].Mark[j] == 2)d1++;			//считает количество двоек
+			else if (Student[i].Mark[j] == 3)t1++;		//считает количество троек
+			else if (Student[i].Mark[j] == 4)h1++;		//считает количество четвёрок
+		}
+		if (d1 > 0) d++; 			//если есть двойки значит двоешник
+		else if (t1 > 0) t++;		//иначе если есть тройки значит троешник
+		else if (h1 > 0) h++; 		//иначе если есть четвёрки значит хорошист
+		else  o++; 					//иначе он отличник
+	}
+	cout << "Отличников - " << o << endl;
+	cout << "Хорошистов - " << h << endl;
+	cout << "Троешников - " << t << endl;
+	cout << "Двоешников - " << d << endl;
+	cout << endl;
+	system("PAUSE");
+}
