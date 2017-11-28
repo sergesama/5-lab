@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string.h>
+#include <cstring>
+using namespace std;
+struct Product{//структура продуктов
+	char Name[64];//имя продукта
+	char category[64];//категория продукта
+};
+int main() {
+	setlocale(LC_ALL, "Russian");//добавляет русский язык в консоль
+	Product product[10];//массив продуктов
+	for (int i = 0; i < 10; i++){
+		cout << "Введите название продукта " << endl;
+		cin.getline(product[i].Name,64);//ввод имени продукта
+		cout << "Введите категорию продукта " << endl;
+		cin.getline(product[i].category, 64);//ввод категории продукта
+	}
+	char poisk_product[64];
+	cout << "Введите категорию продуктов которых хотите вывести" << endl;
+	cin.getline(poisk_product, 64);//ввод категории продуктов которых хотим найти
+	for (int i = 0; i < 10; i++){
+		int fl = strcmp(poisk_product, product[i].category);//функция strcmp посимвольно сравнивает строки если равны возвращает ноль
+		if (fl == 0)cout << product[i].Name << " ";//если категория правельная выводим имя продукта
+	}
+	cout << endl;
+	system("PAUSE");
+}
